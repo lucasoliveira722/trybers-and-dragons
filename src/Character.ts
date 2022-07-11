@@ -1,6 +1,6 @@
 import Archetype, { Mage } from './Archetypes';
 import Energy from './Energy';
-import Fighter from './Fighter';
+import Fighter, { SimpleFighter } from './Fighter';
 import Race, { Elf } from './Races';
 import getRandomInt from './utils';
 
@@ -48,14 +48,14 @@ export default class Character implements Fighter {
     return this._energy;
   }
 
-  special(enemy: Fighter) {
+  special(enemy: Fighter | SimpleFighter) {
     console.log('HADOUKEN!');
     let { lifePoints } = enemy;
     lifePoints -= (this.strength * 2);
     console.log(lifePoints);
   }
 
-  attack(enemy: Fighter): number {
+  attack(enemy: Fighter | SimpleFighter): number {
     let { lifePoints } = enemy;
     lifePoints -= this.strength;
     return lifePoints;
