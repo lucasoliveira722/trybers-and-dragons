@@ -48,21 +48,17 @@ export default class Character implements Fighter {
     return this._energy;
   }
 
-  // get energy.amount() {
-  //   return this._energy.amount
-  // }
-
-  attack(enemy: Fighter): void {
-    let { lifePoints } = enemy;
-    lifePoints -= this.strength;
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  special(enemy: Fighter): void {
+  special(enemy: Fighter) {
     console.log('HADOUKEN!');
     let { lifePoints } = enemy;
-    lifePoints /= 2;
+    lifePoints -= (this.strength * 2);
     console.log(lifePoints);
+  }
+
+  attack(enemy: Fighter): number {
+    let { lifePoints } = enemy;
+    lifePoints -= this.strength;
+    return lifePoints;
   }
   
   levelUp(): void {
